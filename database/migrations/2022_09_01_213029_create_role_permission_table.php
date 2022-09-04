@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Role;
 use App\Models\Permission;
 
-class CreateRolePermissionsTable extends Migration
+class CreateRolePermissionTable extends Migration
 {
     /**
      * Run the migrations.

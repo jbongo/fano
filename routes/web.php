@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,8 @@ use App\Http\Controllers\DashboardController;
 */
 
 
+
 Route::controller(DashboardController::class)->group(function (){
-    Route::get('/', 'index')->name('dashboard.index');
+    Route::get('/', 'index')->name('dashboard.index')->middleware(['auth']);
 });
+require __DIR__.'/auth.php';
