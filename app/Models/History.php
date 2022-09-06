@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RolePermission extends Model
+class History extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
     protected $fillable = [
-        'role_id',
-        'permission_id',
+        'resource_id',
+        'resource',
+        'action',
     ];
-    /***
-     * Indique la table liée à ce modèle
-     */
-    protected $table = 'role_permission';
 }

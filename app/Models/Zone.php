@@ -5,18 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RolePermission extends Model
+class Zone extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
     protected $fillable = [
-        'role_id',
-        'permission_id',
+        'name',
+        'defaultPrice',
     ];
-    /***
-     * Indique la table liée à ce modèle
+
+    /**
+     * Retourne la liste des livraison d'une zone
      */
-    protected $table = 'role_permission';
+    function deliveries()
+    {
+        return $this->hasMany(Deliverie::class);
+    }
 }
