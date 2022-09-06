@@ -5,18 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RolePermission extends Model
+class Permissiongroup extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
     protected $fillable = [
-        'role_id',
-        'permission_id',
+        'name',
     ];
-    /***
-     * Indique la table liée à ce modèle
+
+    /**
+     * Retourne la liste des permissions d'un groupe permission
      */
-    protected $table = 'role_permission';
+    function permissions(){
+
+        return $this->hasMany(Permission::class);
+
+      }
 }

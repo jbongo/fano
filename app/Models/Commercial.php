@@ -5,18 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RolePermission extends Model
+class Commercial extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
     protected $fillable = [
-        'role_id',
-        'permission_id',
+        'contact_id',
+        'isArchive',
+
     ];
-    /***
-     * Indique la table liée à ce modèle
+
+    /**
+     * Retourne le contact que possède un commercial
      */
-    protected $table = 'role_permission';
+    function contacts()
+    {
+        return $this->belongsTo(Contact::class);
+    }
 }

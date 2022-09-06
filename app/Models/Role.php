@@ -11,14 +11,23 @@ class Role extends Model
 
     protected $guarded = [];
 
-
+    protected $fillable = [
+        'name',
+    ];
 
     /**
      * Retourne la liste des permissions d'un rôles
      */
-    function permissions(){
+    function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
 
-      return $this->belongsToMany(Permission::class);
-
+    /**
+     * Retourne la liste des utilisateurs associé à un rôles
+     */
+    function users()
+    {
+        return $this->hasMany(User::class);
     }
 }
