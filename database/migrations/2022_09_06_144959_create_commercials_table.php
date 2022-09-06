@@ -16,7 +16,7 @@ class CreateCommercialsTable extends Migration
         Schema::create('commercials', function (Blueprint $table) {
             $table->id();
             $table->integer("contact_id");
-            $table->boolean("isArchive");
+            $table->boolean("isArchive")->default(false);
             $table->timestamps();
         });
     }

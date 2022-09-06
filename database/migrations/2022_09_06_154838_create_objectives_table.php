@@ -15,9 +15,9 @@ class CreateObjectivesTable extends Migration
     {
         Schema::create('objectives', function (Blueprint $table) {
             $table->id();
-            $table->integer("number_of_weekly_delveries");
-            $table->integer("number_of_monthly_deliveries");
-            $table->integer("number_of_quarterly_deliveries");
+            $table->integer("number_of_weekly_delveries")->nullable();
+            $table->integer("number_of_monthly_deliveries")->nullable();
+            $table->integer("number_of_quarterly_deliveries")->nullable();
             $table->integer("contact_id");
             $table->timestamps();
         });

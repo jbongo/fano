@@ -21,7 +21,7 @@ class CreateContactsTable extends Migration
             $table->string("phone1")->nullable();
             $table->string("phone2")->nullable();
             $table->string("address");
-            $table->boolean("isArchive");
+            $table->boolean("isArchive")->default(false);
             $table->timestamps();
         });
     }

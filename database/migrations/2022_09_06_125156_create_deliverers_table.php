@@ -16,7 +16,7 @@ class CreateDeliverersTable extends Migration
         Schema::create('deliverers', function (Blueprint $table) {
             $table->id();
             $table->integer("contact_id");
-            $table->boolean("isArchive");
+            $table->boolean("isArchive")->default(false);
             $table->timestamps();
         });
     }

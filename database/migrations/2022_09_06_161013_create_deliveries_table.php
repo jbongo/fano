@@ -20,7 +20,7 @@ class CreateDeliveriesTable extends Migration
             $table->integer("zone_id");
             $table->float("price");
             $table->timestamp("date");
-            $table->integer("status");
+            $table->string("status");
             $table->timestamps();
         });
     }

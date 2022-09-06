@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->string("type");
             $table->integer("contact_id");
-            $table->boolean("isArchive");
+            $table->boolean("isArchive")->default(false);
             $table->timestamps();
         });
     }
