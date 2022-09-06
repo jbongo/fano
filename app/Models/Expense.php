@@ -10,17 +10,11 @@ class Expense extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'type',
-        'motif',
-        'date',
-        'contact_id',
-    ];
 
     /**
      * Retourne le contact associé à une dépense
      */
-    function contacts()
+    function contact()
     {
         return $this->belongsTo(Contact::class);
     }

@@ -11,10 +11,6 @@ class RolePermission extends Model
 
     protected $guarded = [];
 
-    protected $fillable = [
-        'role_id',
-        'permission_id',
-    ];
     /***
      * Indique la table liée à ce modèle
      */

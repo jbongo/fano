@@ -10,9 +10,4 @@ class History extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'resource_id',
-        'resource',
-        'action',
-    ];
 }

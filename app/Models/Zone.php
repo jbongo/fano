@@ -10,11 +10,6 @@ class Zone extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'name',
-        'defaultPrice',
-    ];
-
     /**
      * Retourne la liste des livraison d'une zone
      */

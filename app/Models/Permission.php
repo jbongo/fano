@@ -11,12 +11,6 @@ class Permission extends Model
 
     protected $guarded = [];
 
-    protected $fillable = [
-        'name',
-        'description',
-        'permissiongroup_id',
-    ];
-
     /**
      * Retourne la liste des permissions d'un rôles
      */
@@ -27,7 +21,7 @@ class Permission extends Model
     /**
      * Retourne le groupe de permission d'une permission
      */
-    function permissiongroups()
+    function permissiongroup()
     {
         return $this->belongsTo(permissiongroup::class);
     }

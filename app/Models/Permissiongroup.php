@@ -11,9 +11,6 @@ class Permissiongroup extends Model
 
     protected $guarded = [];
 
-    protected $fillable = [
-        'name',
-    ];
 
     /**
      * Retourne la liste des permissions d'un groupe permission

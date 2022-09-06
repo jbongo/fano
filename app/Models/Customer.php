@@ -10,16 +10,10 @@ class Customer extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'type',
-        'contact_id',
-        'isArchive',
-    ];
-
     /**
      * Retourne le contact que possède un client
      */
-    function contacts()
+    function contact()
     {
         return $this->belongsTo(Contact::class);
     }

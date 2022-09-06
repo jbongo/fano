@@ -10,18 +10,10 @@ class Deliverie extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'customer_id',
-        'manager_id',
-        'zone_id',
-        'price',
-        'status',
-    ];
-
     /**
      * Retourne le client associé à une livraison
      */
-    function customers()
+    function customer()
     {
         return $this->belongsTo(Customer::class);
     }
@@ -37,7 +29,7 @@ class Deliverie extends Model
     /**
      * Retourne la zone associé à une livraison
      */
-    function zones()
+    function zone()
     {
         return $this->belongsTo(Zone::class);
     }

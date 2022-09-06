@@ -12,17 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role_id',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,7 +36,7 @@ class User extends Authenticatable
      /**
      * Retourne le role que possède un utilisateur
      */
-    function roles(){
+    function role(){
 
         return $this->belongsTo(Role::class);
 

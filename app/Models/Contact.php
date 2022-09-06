@@ -11,21 +11,10 @@ class Contact extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'firstname',
-        'lastname',
-        'email',
-        'phone1',
-        'phone2',
-        'adresse',
-        'isArchive',
-
-    ];
-
     /**
      * Retourne le livreur associé au contact
      */
-    function deliverers()
+    function deliverer()
     {
         return $this->hasOne(Deliverer::class);
     }
@@ -33,7 +22,7 @@ class Contact extends Model
     /**
      * Retourne le gerant associé au contact
      */
-    function managers()
+    function manager()
     {
         return $this->hasOne(Manager::class);
     }
@@ -41,7 +30,7 @@ class Contact extends Model
     /**
      * Retourne le commercial associé au contact
      */
-    function commercials()
+    function commercial()
     {
         return $this->hasOne(Commercial::class);
     }
@@ -49,7 +38,7 @@ class Contact extends Model
     /**
      * Retourne le client associé au contact
      */
-    function customers()
+    function customer()
     {
         return $this->hasOne(Customer::class);
     }
@@ -73,7 +62,7 @@ class Contact extends Model
     /**
      * Retourne la l'objectif associé à un contact
      */
-    function objectives()
+    function objective()
     {
         return $this->hasOne(Objective::class);
     }

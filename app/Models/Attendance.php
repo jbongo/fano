@@ -10,16 +10,10 @@ class Attendance extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'contact_id',
-        'date',
-
-    ];
-
     /**
      * Retourne le contact associé à une présence
      */
-    function contacts()
+    function contact()
     {
         return $this->belongsTo(Contact::class);
     }

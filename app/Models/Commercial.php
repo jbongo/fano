@@ -10,16 +10,10 @@ class Commercial extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = [
-        'contact_id',
-        'isArchive',
-
-    ];
-
     /**
      * Retourne le contact que possède un commercial
      */
-    function contacts()
+    function contact()
     {
         return $this->belongsTo(Contact::class);
     }
