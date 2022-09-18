@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,11 @@ use App\Http\Controllers\DashboardController;
 
 Route::controller(DashboardController::class)->group(function (){
     Route::get('/', 'index')->name('dashboard.index')->middleware(['auth']);
+});
+Route::controller(RoleController::class)->group(function (){
+    Route::get('/roles', 'index')->name('role.index')->middleware(['auth']);
+});
+Route::controller(PermissionController::class)->group(function (){
+    Route::get('/permissions', 'index')->name('permission.index')->middleware(['auth']);
 });
 require __DIR__.'/auth.php';

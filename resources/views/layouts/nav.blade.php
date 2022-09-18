@@ -17,39 +17,100 @@
                        
                         <li class="side-nav-item">
                             <a href="apps-calendar.html" class="side-nav-link">
-                                <i class="uil-calender"></i>
+                                <i class="uil-presentation-line "></i>
                                 <span> Tableau de board </span>
                             </a>
                         </li>
-
-
+                        <li class="side-nav-item">
+                            <a href="apps-calendar.html" class="side-nav-link">
+                                <i class="uil-chart"></i>
+                                <span> Statistiques </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="apps-calendar.html" class="side-nav-link">
+                                <i class="uil-calender"></i>
+                                <span> Mon profil </span>
+                            </a>
+                        </li>
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                                <i class="uil-envelope"></i>
-                                <span> Contact </span>
+                                <i class="uil-user"></i>
+                                <span> Utilisateurs </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarEmail">
                                 <ul class="side-nav-second-level">
-                                    <li>
-                                        <a href="apps-email-inbox.html">Inbox</a>
-                                    </li>
-                                    <li>
-                                        <a href="apps-email-read.html">Read Email</a>
-                                    </li>
+                                    <li><a href="apps-email-inbox.html">Livreurs</a></li>
+                                    <li><a href="apps-email-inbox.html">Commerciaux</a></li>
+                                    <li><a href="apps-email-inbox.html">Gérants</a></li>
                                 </ul>
                             </div>
                         </li>
 
                         <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                <i class="uil-user-square"></i>
+                                <span> Contacts </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEmail">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="apps-email-inbox.html">Gestion</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+            
+                        <li class="side-nav-item">
                             <a href="apps-calendar.html" class="side-nav-link">
-                                <i class="uil-calender"></i>
-                                <span> Paramètres </span>
+                                <i class="uil-wallet"></i>
+                                <span> Clients </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="apps-calendar.html" class="side-nav-link">
+                                <i class="uil-wallet"></i>
+                                <span> Fournisseurs </span>
                             </a>
                         </li>
 
-
-                  
+                       
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                <i class="uil-folder-lock"></i>
+                                <span> Droits </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEmail">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{{route('role.index')}}">Rôles</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('permission.index')}}">Permissions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+             
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                <i class="uil-cog"></i>
+                                <span> Paramètres </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEmail">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{{route('role.index')}}">Entreprise</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                      
 
                     <!-- end Help Box -->
                     <!-- End Sidebar -->
