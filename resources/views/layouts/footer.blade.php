@@ -84,7 +84,12 @@
 
         <div class="rightbar-overlay"></div>
         <!-- /End-bar -->
-
+        <script src="assets/js/vendor/jquery.dataTables.min.js"></script>
+        <script src="assets/js/vendor/dataTables.bootstrap5.js"></script>
+        <script src="assets/js/vendor/dataTables.responsive.min.js"></script>
+        <script src="assets/js/vendor/responsive.bootstrap5.min.js"></script>
+        <script src="assets/js/vendor/apexcharts.min.js"></script>
+        <script src="assets/js/vendor/dataTables.checkboxes.min.js"></script>
 
         <!-- bundle -->
         <script src="assets/js/vendor.min.js"></script>

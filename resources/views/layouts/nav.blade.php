@@ -78,12 +78,12 @@
 
                        
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                            <a data-bs-toggle="collapse" href="#droits" aria-expanded="false" aria-controls="droits" class="side-nav-link">
                                 <i class="uil-folder-lock"></i>
                                 <span> Droits </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarEmail">
+                            <div class="collapse" id="droits">
                                 <ul class="side-nav-second-level">
                                     <li>
                                         <a href="{{route('role.index')}}">Rôles</a>
@@ -97,12 +97,12 @@
                         
              
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                            <a data-bs-toggle="collapse" href="#parametre" aria-expanded="false" aria-controls="parametre" class="side-nav-link">
                                 <i class="uil-cog"></i>
                                 <span> Paramètres </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarEmail">
+                            <div class="collapse" id="parametre">
                                 <ul class="side-nav-second-level">
                                     <li>
                                         <a href="{{route('role.index')}}">Entreprise</a>
