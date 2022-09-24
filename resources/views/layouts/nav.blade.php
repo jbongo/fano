@@ -1,6 +1,4 @@
-
-
-                <!-- ========== Left Sidebar Start ========== -->
+             <!-- ========== Left Sidebar Start ========== -->
                 <div class="leftside-menu leftside-menu-detached">
 
                     <div class="leftbar-user">
@@ -14,7 +12,7 @@
                     <ul class="side-nav">
 
 
-                       
+
                         <li class="side-nav-item">
                             <a href="apps-calendar.html" class="side-nav-link">
                                 <i class="uil-calender"></i>
@@ -22,7 +20,7 @@
                             </a>
                         </li>
 
-
+                       <!-- Contact -->
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                                 <i class="uil-envelope"></i>
@@ -32,14 +30,33 @@
                             <div class="collapse" id="sidebarEmail">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-email-inbox.html">Inbox</a>
+                                        <a href="{{ route('add_contact') }}">Ajouter un contact</a>
                                     </li>
                                     <li>
-                                        <a href="apps-email-read.html">Read Email</a>
+                                        <a href="{{ route('contact_list') }}">Liste de tous les contacts</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
+                        <!-- Utilisateur -->
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                <i class="uil-envelope"></i>
+                                <span> Utilisateur </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEmail">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{{ route('add_user') }}">Ajouter un utilisateur</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('user_list') }}">Liste de tous les utilisateurs</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
 
                         <li class="side-nav-item">
                             <a href="apps-calendar.html" class="side-nav-link">
@@ -49,7 +66,7 @@
                         </li>
 
 
-                  
+
 
                     <!-- end Help Box -->
                     <!-- End Sidebar -->

@@ -8,7 +8,7 @@
         <meta content="Coderthemes" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-        
+
         <!-- App css -->
         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/app-modern.min.css" rel="stylesheet" type="text/css" id="app-style" />
@@ -30,28 +30,28 @@
                             </div>
 
                             <div class="card-body p-4">
-                                
+
                                 <div class="text-center w-75 m-auto">
                                     <h4 class="text-dark-50 text-center mt-0 fw-bold">Connexion</h4>
                                 </div>
-                             
-                                
+
+
                                 <form  method="POST" action="{{ route('login') }}">
                                     @csrf
 
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input class="form-control" id="email" type="email" name="email" value="{{old('email')}}" required  placeholder="Entrez votre adresse mail">
-                                        @if ($errors->has('email'))  
+                                        @if ($errors->has('email'))
                                             <div class="alert alert-danger alert-dismissible fade show " style="font-size:12px; margin-top:10px;  color:#000" role="alert">
-                                                <strong> {{ $errors->first('email') }}</strong>  
+                                                <strong> {{ $errors->first('email') }}</strong>
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                               </div>
                                         @endif
                                     </div>
 
                                     <div class="mb-3">
-                                        <a href="pages-recoverpw.html" class="text-muted float-end"><small>Mot de passe oublié?</small></a>
+                                        <a href="{{ route('password.request') }}" class="text-muted float-end"><small>Mot de passe oublié?</small></a>
                                         <label for="password" class="form-label">Mot de passe</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="password" name="password" required class="form-control" placeholder="Entrez votre motre de passe">
@@ -59,9 +59,9 @@
                                                 <span class="password-eye"></span>
                                             </div>
                                         </div>
-                                        @if ($errors->has('password'))  
+                                        @if ($errors->has('password'))
                                             <div class="alert alert-danger alert-dismissible fade show " style="font-size:12px; margin-top:10px;  color:#000" role="alert">
-                                                <strong> {{ $errors->first('password') }}</strong>  
+                                                <strong> {{ $errors->first('password') }}</strong>
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
                                         @endif
@@ -83,7 +83,7 @@
                         </div>
                         <!-- end card -->
 
-                      
+
                         <!-- end row -->
 
                     </div> <!-- end col -->
@@ -101,6 +101,6 @@
         <!-- bundle -->
         <script src="assets/js/vendor.min.js"></script>
         <script src="assets/js/app.min.js"></script>
-        
+
     </body>
 </html>
