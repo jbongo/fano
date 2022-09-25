@@ -43,7 +43,7 @@
                                 <div class="alert alert-success text-secondary alert-dismissible fade in">
                                     <i class="dripicons-checkmark me-2"></i>
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <a href="#" class="alert-link"><strong> {{ session('message') }}</strong></a> 
+                                    <a href="#" class="alert-link"><strong> {{ session('message') }}xxxxxxxxxxxx</strong></a> 
                                 </div>
                             @endif 
                             @if ($errors->has('role'))
@@ -57,6 +57,7 @@
                         </div>
                     </div>
                    
+                    {{session('message')}}xxx
                        <div class="table-responsive">
                            <table class="table table-centered table-borderless table-hover w-100 dt-responsive nowrap" id="products-datatable">
                                <thead class="table-light">
@@ -82,7 +83,7 @@
                                       
                                         <td>
                                            {{-- <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a> --}}
-                                           <a href="javascript:void(0);" class="action-icon edit-role text-success"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                           <a data-href="{{route('role.update', $role->id)}}" data-value="{{$role->name}}" data-bs-toggle="modal" data-bs-target="#edit-modal" class="action-icon edit-role text-success"> <i class="mdi mdi-square-edit-outline"></i></a>
                                            @if($role->archive == false)
                                            <a data-href="{{route('role.archive', $role->id)}}" style="cursor: pointer;" class="action-icon archive-role text-warning"> <i class="mdi mdi-archive-arrow-down"></i></a>
                                            @else
@@ -102,6 +103,8 @@
        <!-- end row -->  
         
     </div> <!-- End Content -->
+
+    {{-- Ajout d'un rôle --}}
     <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -127,8 +130,7 @@
                                 </div>
                             @endif
                         </div>
-                        
-                        
+                                                
                     </div>
 
                 </div>
@@ -144,11 +146,69 @@
     </div><!-- /.modal -->
 
 
+     {{-- Modification d'un rôle --}}
+     <div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel">Modifier le rôle</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="" method="POST" id="form-edit">
+                <div class="modal-body">
+                
+                    @csrf
+                    <div class="col-lg-12">
+                        
+                        <div class="form-floating mb-3">
+                            <input type="text" name="role" value="{{old('role') ? old('role') : ''}}" class="form-control" id="edit-role" >
+                            <label for="edit-role">Rôle</label>
+                            @if ($errors->has('role'))
+                                <br>
+                                <div class="alert alert-warning text-secondary " role="alert">
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <strong>{{$errors->first('role')}}</strong> 
+                                </div>
+                            @endif
+                        </div>
+                                                
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-success">Modifier</button>
+
+                </div>
+            </form>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
 
 </div> <!-- content-page -->
 
 @section('js')
+
+{{-- Modification d'un rôle --}}
+<script>
+
+$('.edit-role').click(function (e) {
+
+        let that = $(this);
+        let currentRole = that.data('value');
+        let currentFormAction = that.data('href');
+        $('#edit-role').val(currentRole) ;
+        $('#form-edit').attr('action', currentFormAction) ;
+
+})
+
+</script>
+
+
 <script>
     $(function() {
         $.ajaxSetup({

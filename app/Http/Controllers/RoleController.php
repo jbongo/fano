@@ -14,6 +14,7 @@ class RoleController extends Controller
     public function index(){
 
         $roles = Role::all();
+
         return view('role.index', ['roles' => $roles]);
     }
 
@@ -48,7 +49,7 @@ class RoleController extends Controller
         
         if($role->name != $request->role){
             $request->validate([
-                'role' => 'string|required|unique:roles, name',
+                'role' => 'string|required|unique:roles,name',
             ]);
         }
         $role->name = $request->role;
