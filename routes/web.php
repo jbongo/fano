@@ -26,9 +26,9 @@ Route::controller(DashboardController::class)->group(function (){
 Route::controller(RoleController::class)->group(function (){
     Route::get('/roles', 'index')->name('role.index')->middleware(['auth']);
     Route::post('/role/ajouter', 'store')->name('role.store')->middleware(['auth']);
+    Route::post('/role/desarchiver/{roleId}', 'unarchive')->name('role.unarchive')->middleware(['auth']);
     Route::post('/role/modifier/{roleId}', 'update')->name('role.update')->middleware(['auth']);
     Route::put('/role/archiver/{roleId}', 'archive')->name('role.archive')->middleware(['auth']);
-    Route::put('/role/desarchiver/{roleId}', 'unarchive')->name('role.unarchive')->middleware(['auth']);
 });
 Route::controller(PermissionController::class)->group(function (){
     Route::get('/permissions', 'index')->name('permission.index')->middleware(['auth']);

@@ -13,7 +13,8 @@ class RoleController extends Controller
 
     public function index(){
 
-        return view('role.index');
+        $roles = Role::all();
+        return view('role.index', ['roles' => $roles]);
     }
 
 
@@ -23,15 +24,17 @@ class RoleController extends Controller
 
     public function store(Request $request){
 
+        
         $request->validate([
-            'name' => 'string|required|unique:roles',
+            'role' => 'string|required|unique:roles,name',
         ]);
 
+        $roles = Role::all();
         Role::create([
-            "name" => $request->name
+            "name" => $request->role
         ]);
 
-        return redirect()->route('role.index')->with('ok', 'Nouveau rôle ajouté');
+        return redirect()->route('role.index')->with('message', 'Nouveau rôle ajouté');
     }
 
      /**
@@ -43,15 +46,15 @@ class RoleController extends Controller
 
         $role = Role::where('id', $roleId)->first();
         
-        if($role->name != $request->name){
+        if($role->name != $request->role){
             $request->validate([
-                'role' => 'string|required|unique:roles',
+                'role' => 'string|required|unique:roles, name',
             ]);
         }
-        $role->name = $request->name;
+        $role->name = $request->role;
         $role->update();
       
-        return redirect()->route('role.index')->with('ok', 'Rôle modifié');
+        return redirect()->route('role.index')->with('message', 'Rôle modifié');
     }
 
      /**
@@ -63,7 +66,8 @@ class RoleController extends Controller
         $role = Role::where('id', $roleId)->first();
         $role->archive = true;
         $role->update();
-        return redirect()->route('role.index')->with('ok', 'Rôle archivé');
+        return $role->id;
+        // return redirect()->route('role.index')->with('message', 'Rôle archivé');
 
     }
 
@@ -76,7 +80,8 @@ class RoleController extends Controller
         $role = Role::where('id', $roleId)->first();
         $role->archive = false;
         $role->update();
-        return redirect()->route('role.index')->with('ok', 'Rôle désarchivé');
+        return $role->id;
+        // return redirect()->route('role.index')->with('message', 'Rôle désarchivé');
 
     }
 }
