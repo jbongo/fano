@@ -4,7 +4,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                                    <script>document.write(new Date().getFullYear())</script> © Fano
                                 </div>
                                 <div class="col-md-6">
                                     <div class="text-md-end footer-links d-none d-md-block">
@@ -84,8 +84,14 @@
 
         <div class="rightbar-overlay"></div>
         <!-- /End-bar -->
-
-
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="{{asset('assets/js/vendor/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/js/vendor/dataTables.bootstrap5.js')}}"></script>
+        <script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
+        <script src="{{asset('assets/js/vendor/apexcharts.min.js')}}"></script>
+        <script src="{{asset('assets/js/vendor/dataTables.checkboxes.min.js')}}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- bundle -->
         <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
@@ -117,5 +123,6 @@
 
          <!-- end demo js-->
 
+        @yield('js')
     </body>
 </html>
