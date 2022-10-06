@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\Role;
 
+use Crypt;
+
 class RoleController extends Controller
 {
     /**
@@ -85,4 +87,34 @@ class RoleController extends Controller
         // return redirect()->route('role.index')->with('message', 'Rôle désarchivé');
 
     }
+
+    /**
+    * Retourne la liste des permissions du rôle
+    */
+
+    public function permissions($roleId){
+
+        $role = Role::where('id', Crypt::decrypt($roleId) )->first();
+        dd($role->permissions);
+        $permissions = $role->permissions;
+        
+        return view('role.permission', compact(['role', 'permissions']));
+    }
+
+
+    /**
+     * Modifier les permissions du rôle
+    */
+
+    public function updatePermissions(Request $request, $roleId){
+
+        $role = Role::where('id', Crypt::decrypt($roleId))->first();
+        $permissions = $role->permissions;
+        
+        return view('role.permission', compact(['role', 'permissions']));
+
+    }
+
+
+    
 }

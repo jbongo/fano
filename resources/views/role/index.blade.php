@@ -38,12 +38,13 @@
                         </div><!-- end col-->
                     </div>
                     <div class="row">
+                    
                         <div class="col-6">
-                            @if (session('message'))       
-                                <div class="alert alert-success text-secondary alert-dismissible fade in">
+                            @if(session('message'))       
+                                <div class="alert alert-success text-secondary alert-dismissible ">
                                     <i class="dripicons-checkmark me-2"></i>
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <a href="#" class="alert-link"><strong> {{ session('message') }}xxxxxxxxxxxx</strong></a> 
+                                    <a href="#" class="alert-link"><strong> {{ session('message')}}</strong></a> 
                                 </div>
                             @endif 
                             @if ($errors->has('role'))
@@ -53,11 +54,15 @@
                                     <strong>{{$errors->first('role')}}</strong> 
                                 </div>
                             @endif
+                            <div  id="div-role-message" class="alert alert-success text-secondary alert-dismissible fade in">
+                                <i class="dripicons-checkmark me-2"></i>
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <a href="#" class="alert-link"><strong> <span id="role-message"></span></strong></a> 
+                            </div>
 
                         </div>
                     </div>
                    
-                    {{session('message')}}xxx
                        <div class="table-responsive">
                            <table class="table table-centered table-borderless table-hover w-100 dt-responsive nowrap" id="products-datatable">
                                <thead class="table-light">
@@ -65,6 +70,7 @@
                                   
                                        <th>Rôles</th>
                                        <th>Statut</th>
+                                       <th>Permissions</th>
 
                                        <th style="width: 125px;">Action</th>
                                    </tr>
@@ -80,7 +86,10 @@
                                             @if($role->archive == false) <span class="badge bg-success">Actif</span>
                                             @else<span class="badge bg-warning">Archivé</span>@endif
                                         </td>
-                                      
+                                        <td>
+                                           <a href="{{route('role.permissions', Crypt::encrypt($role->id) )}} " style="cursor: pointer;" class="action-icon text-primary"> <i class="mdi mdi-folder-lock"></i></a>
+                                            
+                                        </td>
                                         <td>
                                            {{-- <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a> --}}
                                            <a data-href="{{route('role.update', $role->id)}}" data-value="{{$role->name}}" data-bs-toggle="modal" data-bs-target="#edit-modal" class="action-icon edit-role text-success"> <i class="mdi mdi-square-edit-outline"></i></a>
@@ -155,7 +164,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="" method="POST" id="form-edit">
+                <form action="" method="post" id="form-edit">
                 <div class="modal-body">
                 
                     @csrf
@@ -190,6 +199,9 @@
 
 
 </div> <!-- content-page -->
+
+
+
 
 @section('js')
 

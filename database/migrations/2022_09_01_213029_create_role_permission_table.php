@@ -17,8 +17,8 @@ class CreateRolePermissionTable extends Migration
     {
         Schema::create('role_permission', function (Blueprint $table) {
             $table->primary(['role_id', 'permission_id']);
-            $table->foreignIdFor(Role::class);
             $table->foreignIdFor(Permission::class);
+            $table->foreignIdFor(Role::class);
             $table->timestamps();
         });
     }
