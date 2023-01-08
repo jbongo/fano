@@ -5,8 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Contact;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
 
 class UserController extends Controller
@@ -125,5 +127,37 @@ class UserController extends Controller
     {
         $user = User::find($id)->delete();
         return $user;
+    }
+    public function profil()
+    {
+        $user=Auth::user();
+        $email=$user->email;
+        $contact=Contact::where('email',$email)->first();
+
+        return view('user.profil',compact('contact','user'));
+
+    }
+    public function resetpassword(Request $request,$id)
+    {
+         //return $request;
+         $user = User::find($id);
+         //return $user;
+         $request->validate([
+             'email' => ['required', 'string', 'email', 'max:255'],
+             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+         ]);
+
+         $user ->update([
+             'email' => $request->email,
+             'password' => Hash::make($request->password),
+         ]);
+
+         Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

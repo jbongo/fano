@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
-
+use Illuminate\Support\Facades\Auth;
 class ContactController extends Controller
 {
     /**
@@ -91,7 +91,9 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contact = Contact::find($id);
+        $user=Auth::user();
+        $email=$user->email;
+        $contact=Contact::where('email',$email)->first();
 
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
@@ -110,7 +112,7 @@ class ContactController extends Controller
             'phone2' => $request->phone2,
             'address' => $request->address,
         ]);
-        return $contact;
+        return redirect()->route('profil');
 
     }
 

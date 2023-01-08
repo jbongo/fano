@@ -57,6 +57,12 @@
                         </div>
                     </li>
 
+                    <li class="side-nav-item">
+                        <a href="{{ route('profil') }}" class="side-nav-link">
+                            <i class="uil-calender"></i>
+                            <span> Profil </span>
+                        </a>
+                    </li>
 
                     <li class="side-nav-item">
                         <a href="apps-calendar.html" class="side-nav-link">

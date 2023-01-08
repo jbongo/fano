@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PermisionRole;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\models\Role;
+use App\models\PermissionRole;
+use Illuminate\Support\Facades\Crypt;
 
-use Crypt;
 
 class RoleController extends Controller
 {
@@ -27,7 +30,7 @@ class RoleController extends Controller
 
     public function store(Request $request){
 
-        
+
         $request->validate([
             'role' => 'string|required|unique:roles,name',
         ]);
@@ -48,7 +51,7 @@ class RoleController extends Controller
 
 
         $role = Role::where('id', $roleId)->first();
-        
+
         if($role->name != $request->role){
             $request->validate([
                 'role' => 'string|required|unique:roles,name',
@@ -56,7 +59,7 @@ class RoleController extends Controller
         }
         $role->name = $request->role;
         $role->update();
-      
+
         return redirect()->route('role.index')->with('message', 'Rôle modifié');
     }
 
@@ -93,12 +96,16 @@ class RoleController extends Controller
     */
 
     public function permissions($roleId){
-
-        $role = Role::where('id', Crypt::decrypt($roleId) )->first();
-        dd($role->permissions);
+        $role=Role::find(Crypt::decrypt($roleId));
+        //dd($role);
         $permissions = $role->permissions;
-        
-        return view('role.permission', compact(['role', 'permissions']));
+
+
+        //$permissions=PermissionRole::all();
+        dd($permissions);
+        //$permissions = $role->permissions;
+
+        //return view('role.permission', compact(['role', 'permissions']));
     }
 
 
@@ -110,11 +117,11 @@ class RoleController extends Controller
 
         $role = Role::where('id', Crypt::decrypt($roleId))->first();
         $permissions = $role->permissions;
-        
+
         return view('role.permission', compact(['role', 'permissions']));
 
     }
 
 
-    
+
 }

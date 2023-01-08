@@ -16,7 +16,7 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean("archive")->default(false);
+            $table->boolean("isArchive")->default(false);
             $table->timestamps();
         });
     }
