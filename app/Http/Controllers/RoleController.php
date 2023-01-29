@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Role;
+use App\models\Permissiongroup;
 
 use Crypt;
 
@@ -95,10 +96,13 @@ class RoleController extends Controller
     public function permissions($roleId){
 
         $role = Role::where('id', Crypt::decrypt($roleId) )->first();
-        dd($role->permissions);
+        $permissionsGroups = Permissiongroup::all();
+       
+        // dd($permissionsGroups[0]->permissions);
+   
         $permissions = $role->permissions;
         
-        return view('role.permission', compact(['role', 'permissions']));
+        return view('role.permission', compact(['role', 'permissions','permissionsGroups']));
     }
 
 

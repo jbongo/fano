@@ -12,10 +12,10 @@
                        <ol class="breadcrumb m-0">
                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                            <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
-                           <li class="breadcrumb-item active">Orders</li>
+                           <li class="breadcrumb-item active">Rôles</li>
                        </ol>
                    </div>
-                   <h4 class="page-title">Orders</h4>
+                   <h4 class="page-title">Rôles</h4>
                </div>
            </div>
        </div>
@@ -30,11 +30,7 @@
                             <a href="javascript:void(0);" class="btn btn-primary mb-2"  data-bs-toggle="modal" data-bs-target="#standard-modal"><i class="mdi mdi-plus-circle me-2"></i> Nouveau rôle</a>
                         </div>
                         <div class="col-sm-7">
-                            <div class="text-sm-end">
-                                <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
-                                <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                                <button type="button" class="btn btn-light mb-2">Export</button>
-                            </div>
+                           
                         </div><!-- end col-->
                     </div>
                     <div class="row">

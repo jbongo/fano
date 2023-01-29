@@ -14,5 +14,5 @@ class RolePermission extends Model
     /***
      * Indique la table liée à ce modèle
      */
-    protected $table = 'role_permission';
+    protected $table = 'permission_role';
 }

@@ -22,6 +22,9 @@ Route::controller(DashboardController::class)->group(function (){
     Route::get('/', 'index')->name('dashboard.index')->middleware(['auth']);
 });
 
+
+
+
 // Rôles 
 Route::controller(RoleController::class)->group(function (){
     Route::get('/roles', 'index')->name('role.index')->middleware(['auth']);
@@ -34,6 +37,11 @@ Route::controller(RoleController::class)->group(function (){
 });
 Route::controller(PermissionController::class)->group(function (){
     Route::get('/permissions', 'index')->name('permission.index')->middleware(['auth']);
+    Route::post('/permission/ajouter', 'store')->name('permission.store')->middleware(['auth']);
+    Route::post('/permission/desarchiver/{roleId}', 'unarchive')->name('permission.unarchive')->middleware(['auth']);
+    Route::post('/permission/modifier/{permission_id}', 'update')->name('permission.update')->middleware(['auth']);
+    Route::post('/permission/modifier', 'updateRolePermission')->name('permission_role.update')->middleware(['auth']);
+    Route::put('/permission/archiver/{roleId}', 'archive')->name('permission.archive')->middleware(['auth']);
 });
 require __DIR__.'/auth.php';
 

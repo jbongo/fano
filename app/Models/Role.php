@@ -26,4 +26,19 @@ class Role extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+    * Vérifie si le rôle a la permission passée en paramètre
+    */
+    public function havePermission($permission_id) {
+        
+        
+        $permission_role = RolePermission::where([['permission_id', $permission_id], ['role_id', $this->id] ])->count();
+      
+        return $permission_role > 0 ? true : false;
+        
+    }
+    
+    
+   
 }

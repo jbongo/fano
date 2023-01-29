@@ -1,7 +1,10 @@
-@include('layouts.header')
-@include('layouts.nav')
+@extends('layouts.app')
+@section('css')
+<link href="{{asset('assets/css/vendor/dataTables.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/css/vendor/responsive.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+@endsection
 
-        
+@section('content')
 <div class="content">
     
     <!-- start page title -->
@@ -10,61 +13,43 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Projects</li>
+                        <li class="breadcrumb-item"><a href="">Permissions</a></li>
                     </ol>
                 </div>
-                <h4 class="page-title">Projects</h4>
+                <h4 class="page-title">Permissions</h4>
             </div>
         </div>
     </div>
     <!-- end page title --> 
 
+    <style>
+    
+    body{
+    
+        font-size: 14px;
+    }
+    </style>
+  
+    <!-- end row-->
+
+
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
             <div class="card widget-inline">
                 <div class="card-body p-0">
                     <div class="row g-0">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card shadow-none m-0">
-                                <div class="card-body text-center">
-                                    <i class="dripicons-briefcase text-muted" style="font-size: 24px;"></i>
-                                    <h3><span>29</span></h3>
-                                    <p class="text-muted font-15 mb-0">Total Projects</p>
-                                </div>
+                        
+                        <div class="col-sm-2 mr-14 ">
+                            <a href="{{route('role.index')}}" type="button" class="btn btn-outline-primary"><i class="uil-arrow-left"></i> Rôles</a>
+                        </div>
+                        @if(session('ok'))
+                        <div class="col-6">
+                            <div class="alert alert-success alert-dismissible bg-success text-white text-center border-0 fade show" role="alert">
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <strong> {{session('ok')}}</strong>
                             </div>
                         </div>
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card shadow-none m-0 border-start">
-                                <div class="card-body text-center">
-                                    <i class="dripicons-checklist text-muted" style="font-size: 24px;"></i>
-                                    <h3><span>715</span></h3>
-                                    <p class="text-muted font-15 mb-0">Total Tasks</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card shadow-none m-0 border-start">
-                                <div class="card-body text-center">
-                                    <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
-                                    <h3><span>31</span></h3>
-                                    <p class="text-muted font-15 mb-0">Members</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card shadow-none m-0 border-start">
-                                <div class="card-body text-center">
-                                    <i class="dripicons-graph-line text-muted" style="font-size: 24px;"></i>
-                                    <h3><span>93%</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
-                                    <p class="text-muted font-15 mb-0">Productivity</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
 
                     </div> <!-- end row -->
                 </div>
@@ -73,477 +58,295 @@
     </div>
     <!-- end row-->
 
-
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="header-title">Project Status</h4>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="my-4 chartjs-chart" style="height: 194px;">
-                        <canvas id="project-status-chart" data-colors="#10c469,#536de6,#ff5b5b"></canvas>
-                    </div>
-
-                    <div class="row text-center mt-2 py-2">
-                        <div class="col-sm-4">
-                            <div class="my-2 my-sm-0">
-                                    <i class="mdi mdi-trending-up text-success mt-3 h3"></i>
-                                <h3 class="fw-normal">
-                                    <span>64%</span>
-                                </h3>
-                                <p class="text-muted mb-0">Completed</p>
-                            </div>
-                            
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="my-2 my-sm-0">
-                                    <i class="mdi mdi-trending-down text-primary mt-3 h3"></i>
-                                <h3 class="fw-normal">
-                                    <span>26%</span>
-                                </h3>
-                                <p class="text-muted mb-0"> In-progress</p>
-                            </div>
-                            
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="my-2 my-sm-0">
-                                    <i class="mdi mdi-trending-down text-danger mt-3 h3"></i>
-                                <h3 class="fw-normal">
-                                    <span>10%</span>
-                                </h3>
-                                <p class="text-muted mb-0"> Behind</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <!-- end row-->
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h4 class="header-title">Tasks</h4>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p><b>107</b> Tasks completed out of 195</p>
-
-                    <div class="table-responsive">
-                        <table class="table table-centered table-nowrap table-hover mb-0">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Coffee detail page - Main Page</a></h5>
-                                        <span class="text-muted font-13">Due in 3 days</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Status</span> <br/>
-                                        <span class="badge badge-warning-lighten">In-progress</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">Logan R. Cohn</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">3h 20min</h5>
-                                    </td>
-                                    <td class="table-action" style="width: 90px;">
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Drinking bottle graphics</a></h5>
-                                        <span class="text-muted font-13">Due in 27 days</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Status</span> <br/>
-                                        <span class="badge badge-danger-lighten">Outdated</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">Jerry F. Powell</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">12h 21min</h5>
-                                    </td>
-                                    <td class="table-action" style="width: 90px;">
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">App design and development</a></h5>
-                                        <span class="text-muted font-13">Due in 7 days</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Status</span> <br/>
-                                        <span class="badge badge-success-lighten">Completed</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">Scot M. Smith</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">78h 05min</h5>
-                                    </td>
-                                    <td class="table-action" style="width: 90px;">
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Poster illustation design</a></h5>
-                                        <span class="text-muted font-13">Due in 5 days</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Status</span> <br/>
-                                        <span class="badge badge-warning-lighten">In-progress</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">John P. Ritter</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">26h 58min</h5>
-                                    </td>
-                                    <td class="table-action" style="width: 90px;">
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div> <!-- end table-responsive-->
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-    </div>
-    <!-- end row-->
-
-
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h4 class="header-title">Tasks Overview</h4>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                            </div>
-                        </div>
-                    </div>
+                 <div class="row mb-2">
+                     <div class="col-sm-5">
+                         <a href="javascript:void(0);" class="btn btn-primary mb-2"  data-bs-toggle="modal" data-bs-target="#standard-modal"><i class="mdi mdi-plus-circle me-2"></i> Ajouter permission</a>
+                     </div>
+                     
+                 </div>
+                 <div class="row">
+                 
+                     <div class="col-6">
+                         @if(session('message'))       
+                             <div class="alert alert-success text-secondary alert-dismissible ">
+                                 <i class="dripicons-checkmark me-2"></i>
+                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                 <a href="#" class="alert-link"><strong> {{ session('message')}}</strong></a> 
+                             </div>
+                         @endif 
+                         @if ($errors->has('role'))
+                             <br>
+                             <div class="alert alert-warning text-secondary " role="alert">
+                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                 <strong>{{$errors->first('role')}}</strong> 
+                             </div>
+                         @endif
+                         <div  id="div-role-message" class="alert alert-success text-secondary alert-dismissible fade in">
+                             <i class="dripicons-checkmark me-2"></i>
+                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                             <a href="#" class="alert-link"><strong> <span id="role-message"></span></strong></a> 
+                         </div>
 
-                    <div dir="ltr">
-                        <div class="mt-3 chartjs-chart" style="height: 320px;">
-                            <canvas id="task-area-chart" data-bgColor="#536de6" data-borderColor="#536de6"></canvas>
-                        </div>
-                    </div>
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-    </div>
-    <!-- end row-->
-
-
-    <div class="row">
-        <div class="col-xl-5">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h4 class="header-title">Recent Activities</h4>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                            </div>
-                        </div>
-                    </div>
-
+                     </div>
+                 </div>
+                
                     <div class="table-responsive">
-                        <table class="table table-centered table-nowrap table-hover mb-0">
+                        <form action="{{route('permission_role.update')}}" method="post">
+                        @csrf
+                        <table class="table table-centered table-borderless table-hover w-100 dt-responsive nowrap" id="tab1">
+                            <thead class="table-light">
+                                <tr>
+                               
+                                    <th>#</th>
+                                    
+                                    @foreach ($roles as $role)
+                                    <th>{{$role->name}}</th>
+                                    @endforeach
+
+                                    <th style="width: 125px;">Action</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-start">
-                                            <img class="me-2 rounded-circle" src="assets/images/users/avatar-2.jpg" width="40" alt="Generic placeholder image">
-                                            <div>
-                                                <h5 class="mt-0 mb-1">Soren Drouin<small class="fw-normal ms-3">18 Jan 2019 11:28 pm</small></h5>
-                                                <span class="font-13">Completed "Design new idea"...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Project</span> <br/>
-                                        <p class="mb-0">Hyper Mockup</p>
-                                    </td>
-                                    <td class="table-action" style="width: 50px;">
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-horizontal"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($permissionsGroups as $group)
+                                            
+                                    <tr>
+                                  
+                                        <td ><span class="fw-bold" style="font-size: 20px" >{{$group->name}} </span></td>
+                                    </tr>
+                                    @foreach ($group->permissions as $permission)
+                                    <tr>
+                                       
+                                        <td> <label for="{{$permission->id}}" style="cursor: pointer;" class="text-body fw-bold">{{$permission->description}} </label> </td>
+                                        @foreach ($roles as $role)
 
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-start">
-                                            <img class="me-2 rounded-circle" src="assets/images/users/avatar-6.jpg" width="40" alt="Generic placeholder image">
-                                            <div>
-                                                <h5 class="mt-0 mb-1">Anne Simard<small class="fw-normal ms-3">18 Jan 2019 11:09 pm</small></h5>
-                                                <span class="font-13">Assigned task "Poster illustation design"...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Project</span> <br/>
-                                        <p class="mb-0">Hyper Mockup</p>
-                                    </td>
-                                    <td class="table-action" style="width: 50px;">
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-horizontal"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-start">
-                                            <img class="me-2 rounded-circle" src="assets/images/users/avatar-3.jpg" width="40" alt="Generic placeholder image">
-                                            <div>
-                                                <h5 class="mt-0 mb-1">Nicolas Chartier<small class="fw-normal ms-3">15 Jan 2019 09:29 pm</small></h5>
-                                                <span class="font-13">Completed "Drinking bottle graphics"...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Project</span> <br/>
-                                        <p class="mb-0">Web UI Design</p>
-                                    </td>
-                                    <td class="table-action" style="width: 50px;">
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-horizontal"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-start">
-                                            <img class="me-2 rounded-circle" src="assets/images/users/avatar-4.jpg" width="40" alt="Generic placeholder image">
-                                            <div>
-                                                <h5 class="mt-0 mb-1">Gano Cloutier<small class="fw-normal ms-3">10 Jan 2019 08:36 pm</small></h5>
-                                                <span class="font-13">Completed "Design new idea"...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Project</span> <br/>
-                                        <p class="mb-0">UBold Admin</p>
-                                    </td>
-                                    <td class="table-action" style="width: 50px;">
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-horizontal"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-start">
-                                            <img class="me-2 rounded-circle" src="assets/images/users/avatar-5.jpg" width="40" alt="Generic placeholder image">
-                                            <div>
-                                                <h5 class="mt-0 mb-1">Francis Achin<small class="fw-normal ms-3">08 Jan 2019 12:28 pm</small></h5>
-                                                <span class="font-13">Assigned task "Hyper app design"...</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Project</span> <br/>
-                                        <p class="mb-0">Website Mockup</p>
-                                    </td>
-                                    <td class="table-action" style="width: 50px;">
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-dots-horizontal"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        {{-- {{dd($role->havePermission(1))}} --}}
+                                        <td>
+                                            
+                                            <input type="checkbox" name="{{$role->id.'_'.$permission->id}}" id="{{$role->id.'_'.$permission->id}}"  @if($role->havePermission($permission->id)) checked @endif>
+                                        </td>
+                                        @endforeach
+                                        
+                                        <td>
+                                            <a data-href="{{route('permission.update', $permission->id)}}" data-nom="{{$permission->name}}" data-description="{{$permission->description}}"
+                                                data-permissiongroup="{{$permission->permissiongroup->name}}" data-permissiongroup_id="{{$permission->permissiongroup_id}}" data-bs-toggle="modal" data-bs-target="#edit-modal" class="action-icon edit-role text-success"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            
+                                        </td>
+                                
+                                    </tr>
+                                    @endforeach
+                                
+                               @endforeach
                                 
                             </tbody>
                         </table>
-                    </div> <!-- end table-responsive-->
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-
-        <div class="col-xl-7">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h4 class="header-title">Your Calendar</h4>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                            </div>
-                        </div>
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                        
+                        </form>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div data-provide="datepicker-inline" data-date-today-highlight="true" class="calendar-widget"></div>
-                        </div> <!-- end col-->
-                        <div class="col-md-5">
-                            <ul class="list-unstyled mt-1">
-                                <li class="mb-4">
-                                    <p class="text-muted mb-1 font-13">
-                                        <i class="mdi mdi-calendar"></i> 7:30 AM - 10:00 AM
-                                    </p>
-                                    <h5>Meeting with BD Team</h5>
-                                </li>
-                                <li class="mb-4">
-                                    <p class="text-muted mb-1 font-13">
-                                        <i class="mdi mdi-calendar"></i> 10:30 AM - 11:45 AM
-                                    </p>
-                                    <h5>Design Review - Hyper Admin</h5>
-                                </li>
-                                <li class="mb-4">
-                                    <p class="text-muted mb-1 font-13">
-                                        <i class="mdi mdi-calendar"></i> 12:15 PM - 02:00 PM
-                                    </p>
-                                    <h5>Setup Github Repository</h5>
-                                </li>
-                                <li>
-                                    <p class="text-muted mb-1 font-13">
-                                        <i class="mdi mdi-calendar"></i> 5:30 PM - 07:00 PM
-                                    </p>
-                                    <h5>Meeting with Design Studio</h5>
-                                </li>
-                            </ul>
-                        </div> <!-- end col -->
-                    </div>
-                    <!-- end row -->
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
     </div>
-    <!-- end row-->
+    <!-- end row -->  
+
+        {{-- Ajout d'un rôle --}}
+        <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="standard-modalLabel">Ajouter une permission</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+    
+                    <form action="{{route('permission.store')}}" method="post">
+                    <div class="modal-body">
+                    
+                        @csrf
+                        <div class="col-lg-12">
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nom" value="{{old('nom') ? old('nom') : ''}}" class="form-control" id="floatingInput" >
+                                <label for="floatingInput">Permission</label>
+                                @if ($errors->has('nom'))
+                                    <br>
+                                    <div class="alert alert-warning text-secondary " role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{{$errors->first('nom')}}</strong> 
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="description" value="{{old('description') ? old('description') : ''}}" class="form-control" id="floatingInput" >
+                                <label for="floatingInput">Description</label>
+                                @if ($errors->has('description'))
+                                    <br>
+                                    <div class="alert alert-warning text-secondary " role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{{$errors->first('description')}}</strong> 
+                                    </div>
+                                @endif
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <select name="groupe_id" id="groupe_id" class="form-select">
+                                @foreach ($permissionsGroups as $groupe)
+                                    <option value="{{$groupe->id}}">{{$groupe->name}}</option>                                    
+                                @endforeach
+                                
+                                </select>
+                                <label for="floatingInput">Groupe</label>
+                                @if ($errors->has('role'))
+                                    <br>
+                                    <div class="alert alert-warning text-secondary " role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{{$errors->first('role')}}</strong> 
+                                    </div>
+                                @endif
+                            </div>
+                                                    
+                        </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    
+                    </div>
+                </form>
+    
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+    
+         {{-- Modification d'un rôle --}}
+         <div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="standard-modalLabel">Modifier la permission</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+    
+                    <form action="" method="post" id="form-edit">
+                    <div class="modal-body">
+                    
+                        @csrf
+                        <div class="col-lg-12">
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nom" value="{{old('nom') ? old('nom') : ''}}" class="form-control" id="edit-nom" >
+                                <label for="edit-nom">Permission</label>
+                                @if ($errors->has('nom'))
+                                    <br>
+                                    <div class="alert alert-warning text-secondary " role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{{$errors->first('nom')}}</strong> 
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="description" value="{{old('description') ? old('description') : ''}}" class="form-control" id="edit-description" >
+                                <label for="edit-description">Description</label>
+                                @if ($errors->has('description'))
+                                    <br>
+                                    <div class="alert alert-warning text-secondary " role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{{$errors->first('description')}}</strong> 
+                                    </div>
+                                @endif
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <select name="groupe_id" id="edit-permissiongroup_id" class="form-select">
+                                @foreach ($permissionsGroups as $groupe)
+                                    <option value="{{$groupe->id}}">{{$groupe->name}}</option>                                    
+                                @endforeach                                
+                                </select>
+                                <label for="edit-permissiongroup_id">Groupe</label>
+                                
+                                @if ($errors->has('role'))
+                                    <br>
+                                    <div class="alert alert-warning text-secondary " role="alert">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <strong>{{$errors->first('role')}}</strong> 
+                                    </div>
+                                @endif
+                            </div>
+                                                    
+                        </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-success">Modifier</button>
+    
+                    </div>
+                </form>
+    
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
     
 </div> <!-- End Content -->
-@include('layouts.footer')
+
+
+@endsection
+
+@section('script')
+
+
+{{-- Modification d'un rôle --}}
+<script>
+
+    $('.edit-role').click(function (e) {
+    
+            let that = $(this);
+            let currentNom = that.data('nom');
+            let currentDescription = that.data('description');
+            let currentPermissiongroup_id = that.data('permissiongroup_id');
+            let currentPermissiongroup = that.data('permissiongroup');
+            
+            let currentFormAction = that.data('href');
+            $('#edit-nom').val(currentNom) ;
+            $('#edit-description').val(currentDescription) ;
+            $('#edit-permissiongroup_id option[value='+currentPermissiongroup_id+']').attr('selected','selected');
+           
+
+            $('#form-edit').attr('action', currentFormAction) ;
+    
+    })
+    
+    </script>
+    
+
+    
+    
+<script src="{{asset('assets/js/vendor/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/dataTables.bootstrap5.js')}}"></script>
+<script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
+<script>
+    $(document).ready(function()
+    {
+        "use strict";
+        $("#tab1").
+            DataTable(
+            {
+            language:{
+            paginate:{previous:"<i class='mdi mdi-chevron-left'>",
+            next:"<i class='mdi mdi-chevron-right'>"},
+            info:"Showing actions _START_ to _END_ of _TOTAL_",
+            lengthMenu:'Afficher <select class=\'form-select form-select-sm ms-1 me-1\'><option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="-1">All</option></select> '},
+            pageLength:100,
+   
+            select:{style:"multi"},
+            drawCallback:function(){$(".dataTables_paginate > .pagination").addClass("pagination-rounded"),
+            document.querySelector(".dataTables_wrapper .row").querySelectorAll(".col-md-6").forEach(function(e){e.classList.add("col-sm-6"),e.classList.remove("col-sm-12"),e.classList.remove("col-md-6")})}})});
+</script>
+@endsection
