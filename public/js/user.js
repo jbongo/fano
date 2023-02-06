@@ -27,7 +27,7 @@ $(document).ready(function () {
                     if (response != '') {
                         if ($("#update").val() == "update") {
                             console.log(response);
-                            location.reload();
+
 
 
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
 
     });
-    $('body').on('click', '#delete a', function (e) {
+    $('body').on('click', '#delete_user a', function (e) {
         user_id = $(this).attr("data-id");
 
         console.log(user_id);

@@ -23,7 +23,8 @@
         <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" id="app-style" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+        <script src="{{ asset('js/user.js') }}"></script>
+<script src="{{ asset('js/contact.js') }}"></script>
     </head>
 
     <body class="loading" data-layout-color="light" data-layout="detached" data-rightbar-onstart="true">
@@ -33,14 +34,14 @@
             <div class="container-fluid">
 
                 <!-- LOGO -->
-                <a href="index.html" class="topnav-logo">
+                {{-- <a href="index.html" class="topnav-logo">
                     <span class="topnav-logo-lg">
                         <img src="assets/images/logo-light.png" alt="" height="16">
                     </span>
                     <span class="topnav-logo-sm">
                         <img src="assets/images/logo_sm.png" alt="" height="16">
                     </span>
-                </a>
+                </a> --}}
 
                 <ul class="list-unstyled topbar-menu float-end mb-0">
 
@@ -55,7 +56,7 @@
                         </div>
                     </li>
 
-                    <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
+                    {{-- <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" id="topbar-languagedrop" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span> <i class="mdi mdi-chevron-down"></i>
                         </a>
@@ -67,9 +68,9 @@
                             </a>
 
                         </div>
-                    </li>
+                    </li> --}}
 
-                    <li class="dropdown notification-list">
+                    {{-- <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" id="topbar-notifydrop" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="dripicons-bell noti-icon"></i>
                             <span class="noti-icon-badge"></span>
@@ -139,7 +140,7 @@
                         </a>
 
                         </div>
-                    </li>
+                    </li> --}}
 
 
                     <li class="notification-list">
@@ -155,7 +156,14 @@
                                 <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                             </span>
                             <span>
-                                <span class="account-user-name">Dominique Poisson</span>
+                                <span class="account-user-name">@php
+                                    use App\Models\Contact;
+                                    $user=Auth::user()->email;
+                                    $contact=App\Models\Contact::where('email',$user)->first();
+
+                                @endphp
+                                    {{$contact->lastname}} {{$contact->firstname }}
+                                    </span>
                                 <span class="account-position">Gérant</span>
                             </span>
                         </a>

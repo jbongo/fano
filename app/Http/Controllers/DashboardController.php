@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    
+
     /**
      * Retourne la page de dashboard
      */

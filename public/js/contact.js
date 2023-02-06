@@ -6,7 +6,7 @@ $(document).ready(function () {
         }
     });
 
-    $('body').on('click', '#edit a', function (e) {
+    $('body').on('click', '#edit_contact a', function (e) {
         contact_id = $(this).attr("data-id");
 
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
                 success: function (response) {
                     if (response != '') {
                         if ($("#update").val() == "update") {
-                            console.log(response);
+                            console.log("response");
                             location.reload();
 
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                url: '/delete_user/' + contact_id,
+                url: '/delete_contact/' + contact_id,
                 data: new FormData(form),
                 processData: false,
                 dataType: 'json',

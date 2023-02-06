@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Manager;
+use App\Models\Commercial;
+use App\Models\Deliverer;
 use Illuminate\Support\Facades\Auth;
+
 class ContactController extends Controller
 {
     /**
@@ -16,7 +20,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::all();
-        return view('contact.contact_list',compact('contacts'));
+        return view('contact.contact_list', compact('contacts'));
     }
 
     /**
@@ -47,7 +51,7 @@ class ContactController extends Controller
         //dd($request);
         // return response()->json($validate);
 
-        $contact=Contact::create([
+        $contact = Contact::create([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
@@ -55,9 +59,25 @@ class ContactController extends Controller
             'phone2' => $request->phone2,
             'address' => $request->address,
         ]);
+        //dd($contact->id);
+        if ($request->post == "manager") {
+            $manager = Manager::create([
+                'contact_id' => $contact->id,
+
+            ]);
+        } elseif ($request->post == "commercial") {
+            $commercial = Commercial::create([
+                'contact_id' => $contact->id,
+
+            ]);
+        } elseif ($request->post == "deliverer") {
+            $deliverer = Deliverer::create([
+                'contact_id' => $contact->id,
+
+            ]);
+        }
 
         return redirect()->route('contact_list');
-
     }
 
     /**
@@ -91,18 +111,15 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=Auth::user();
-        $email=$user->email;
-        $contact=Contact::where('email',$email)->first();
 
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone1' => ['required', 'min:10'],
             'phone2' => ['required', 'min:10'],
         ]);
-        //dd($request);
-        // return response()->json($validate);
 
+        // return response()->json($validate);
+        $contact = Contact::where('email', $request->email)->first();
 
         $contact->update([
             'firstname' => $request->firstname,
@@ -112,7 +129,65 @@ class ContactController extends Controller
             'phone2' => $request->phone2,
             'address' => $request->address,
         ]);
-        return redirect()->route('profil');
+        if ($request->post == "manager" && $request->ancien_post == "commercial") {
+            //dd( $id);
+            $manager = Manager::create([
+                'contact_id' => $id,
+
+            ]);
+
+            $ancien_post = Commercial::where('contact_id', $id)->delete();
+            return response()->json($ancien_post);
+
+        } elseif ($request->post == "manager" and $request->ancien_post == "deliverer") {
+            $manager = Manager::create([
+                'contact_id' => $id,
+
+            ]);
+            $ancien_post = Deliverer::where('contact_id', $id)->delete();
+            return response()->json($ancien_post);
+
+        } elseif ($request->post == "manager" and $request->ancien_post == "manager") {
+            return $contact;
+        }elseif ($request->post == "commercial" and $request->ancien_post == "manager") {
+            //dd($request->ancien_post);
+            $commercial = Commercial::create([
+                'contact_id' => $id,
+
+            ]);
+
+            $ancien_post = Manager::where('contact_id', $id)->delete();
+            return response()->json($ancien_post);
+
+        } elseif ($request->post == "commercial" and $request->ancien_post == "deliverer") {
+            $commercial = Commercial::create([
+                'contact_id' => $id,
+
+            ]);
+            $ancien_post = Deliverer::where('contact_id', $id)->delete();
+            return response()->json($ancien_post);
+        } elseif ($request->post == "commercial" and $request->ancien_post == "commercial") {
+            return $contact;
+        }elseif ($request->post == "deliverer" and $request->ancien_post == "manager") {
+
+            $deliverer = Deliverer::create([
+                'contact_id' => $id,
+
+            ]);
+            $ancien_post = Manager::where('contact_id', $id)->delete();
+            return response()->json($ancien_post);
+        } elseif ($request->post == "deliverer" and $request->ancien_post == "commercial") {
+            $deliverer = Deliverer::create([
+                'contact_id' => $id,
+
+            ]);
+            $ancien_post = Deliverer::where('contact_id', $id)->delete();
+            return response()->json($ancien_post);
+        } elseif ($request->post == "deliverer" and $request->ancien_post == "deliverer") {
+            return $contact;
+        }else{
+            return $request->ancien_post;
+        }
 
     }
 
@@ -124,6 +199,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
+        
         $contact = Contact::find($id)->delete();
         return $contact;
     }

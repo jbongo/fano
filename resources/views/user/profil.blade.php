@@ -1,5 +1,5 @@
-@extends('layouts.app2')
-@section('content')
+@include('layouts.header')
+@include('layouts.nav')
 
 <div class="content">
 
@@ -312,6 +312,6 @@
 
 </div>
 
-@endsection
+@include('layouts.footer')
 @push('scripts')
 @endpush

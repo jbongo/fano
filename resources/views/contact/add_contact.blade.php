@@ -1,5 +1,5 @@
-@extends('layouts.app2')
-@section('content')
+@include('layouts.header')
+@include('layouts.nav')
     <div class="content">
         <!-- start page title -->
         <div class="row">
@@ -77,6 +77,19 @@
 
                                     </div>
 
+                                    <div class="row g-2">
+                                        <div class="mb-3 col-md-6">
+                                            <label for="inputState" class="form-label">Poste</label>
+                                            <select id="post" name="post" required
+                                            class="form-control">
+                                                <option value="manager">Gérant</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="deliverer">Livreur</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Valider</button>
                                 </form>
                             </div> <!-- end preview-->
@@ -90,6 +103,7 @@
         </div>
         <!-- end row -->
     </div> <!-- End Content -->
-@endsection
+
+    @include('layouts.footer')
 @push('scripts')
 @endpush

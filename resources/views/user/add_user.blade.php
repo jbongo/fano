@@ -1,5 +1,5 @@
-@extends('layouts.app2')
-@section('content')
+@include('layouts.header')
+@include('layouts.nav')
 
 
 <div class="content">
@@ -85,7 +85,7 @@
     </div>
     <!-- end row -->
 </div> <!-- End Content -->
-@endsection
+@include('layouts.footer')
 @push('scripts')
 
 @endpush

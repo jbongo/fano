@@ -28,63 +28,48 @@
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="apps-calendar.html" class="side-nav-link">
+                            <a href="{{ route('profil') }}" class="side-nav-link">
                                 <i class="uil-calender"></i>
-                                <span> Mon profil </span>
+                                <span> Profil </span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                            <a data-bs-toggle="collapse" href="#sidebaruser" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                                 <i class="uil-user"></i>
                                 <span> Utilisateurs </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <div class="collapse" id="sidebarEmail">
-                                <ul class="side-nav-second-level">
-                                    <li><a href="apps-email-inbox.html">Livreurs</a></li>
-                                    <li><a href="apps-email-inbox.html">Commerciaux</a></li>
-                                    <li><a href="apps-email-inbox.html">Gérants</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                                <i class="uil-user-square"></i>
-                                <span> Contacts </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarEmail">
-                                <ul class="side-nav-second-level">
-                                    <li>
-                                        <a href="{{ route('add_contact') }}">Ajouter un contact</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('contact_list') }}">Liste de tous les contacts</a>
-                                        <a href="apps-email-inbox.html">Gestion</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- Utilisateur -->
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                                <i class="uil-envelope"></i>
-                                <span> Utilisateur </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarEmail">
+                            <div class="collapse" id="sidebaruser">
                                 <ul class="side-nav-second-level">
                                     <li>
                                         <a href="{{ route('add_user') }}">Ajouter un utilisateur</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('user_list') }}">Liste de tous les utilisateurs</a>
-            
                                     </li>
                                 </ul>
                             </div>
                         </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarcontact" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                                <i class="uil-user-square"></i>
+                                <span> Employé </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarcontact">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{{ route('add_contact') }}">Ajouter un employé</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('contact_list') }}">Liste de tous les employés</a>
+                                        <a href="apps-email-inbox.html">Gestion</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="side-nav-item">
                             <a href="apps-calendar.html" class="side-nav-link">
                                 <i class="uil-wallet"></i>
@@ -98,7 +83,7 @@
                             </a>
                         </li>
 
-                       
+
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#droits" aria-expanded="false" aria-controls="droits" class="side-nav-link">
                                 <i class="uil-folder-lock"></i>
@@ -118,7 +103,7 @@
                         </li>
 
 
-                        
+
 
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#parametre" aria-expanded="false" aria-controls="parametre" class="side-nav-link">
@@ -137,7 +122,7 @@
 
 
 
-                      
+
 
                     <!-- end Help Box -->
                     <!-- End Sidebar -->

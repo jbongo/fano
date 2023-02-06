@@ -1,5 +1,5 @@
-@extends('layouts.app2')
-@section('content')
+@include('layouts.header')
+@include('layouts.nav')
     @include('user.delete_user')
     <!-- start page title -->
     <div class="row">
@@ -51,7 +51,7 @@
                                                 <td><button id="edit"><a href="#" data-bs-toggle="modal"
                                                             data-bs-target="#edit_user{{ $user->id }}" data-id="{{ $user->id }}"><i
                                                                 class=" dripicons-pencil"></i></a></button> </td>
-                                                <td><button id="delete" value="{{ $user->email }}"><a href="#"
+                                                <td><button id="delete_user" value="{{ $user->email }}"><a href="#"
                                                             data-bs-toggle="modal" data-bs-target="#delete_user"
                                                             data-id="{{ $user->id }}"><i
                                                                 class=" dripicons-trash"></i></a></button> </td>
@@ -60,7 +60,7 @@
                                                 <td><button id="edit"><a href="#" data-bs-toggle="modal"
                                                             data-bs-target="#edit_user{{ $user->id }}" data-id="{{ $user->id }}"><i
                                                                 class=" dripicons-pencil"></i></a></button> </td>
-                                                <td><button id="delete"><a href="#" data-bs-toggle="modal"
+                                                <td><button id="delete_user"><a href="#" data-bs-toggle="modal"
                                                             data-bs-target="#delete_user" data-id="{{ $user->id }}"><i
                                                                 class=" dripicons-trash"></i></a></button> </td>
                                             @endif
@@ -79,6 +79,7 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div> <!-- end row-->
-@endsection
+
+    @include('layouts.footer')
 @push('scripts')
 @endpush
