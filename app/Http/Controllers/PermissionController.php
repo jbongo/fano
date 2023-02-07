@@ -54,7 +54,7 @@ class PermissionController extends Controller
         ]);
 
         Permission::create([
-            "nom"=>$request->nom,
+            "name"=>$request->nom,
             "description"=>$request->description,
             "permissiongroup_id"=>$request->groupe_id,
         ]);
@@ -79,7 +79,7 @@ class PermissionController extends Controller
         ]);
 
   
-        $permission->nom=$request->nom;
+        $permission->name=$request->nom;
         $permission->description=$request->description;
         $permission->permissiongroup_id=$request->groupe_id;
         
